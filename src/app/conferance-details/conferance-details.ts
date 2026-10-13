@@ -1,26 +1,17 @@
-import { Component, input, output } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ConferanceService } from '../services/conferance.service';
 
 @Component({
   selector: 'app-conferance-details',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './conferance-details.html',
-  styleUrl: './conferance-details.css',
+  styleUrl: './conferance-details.css'
 })
 export class ConferanceDetails {
-//  conf = input<any>() 
-//    increment = output();
-//  inc(){
-//  this.increment.emit();
-//  }
+  private readonly activatedRoute = inject(ActivatedRoute);
+  private readonly conferanceService = inject(ConferanceService);
 
-
-///ActivatedRoute
-// id:any;
-// constructor(private ar:ActivatedRoute) {
-// this.id=this.ar.snapshot.params['id'];
-// console.log(this.id);
-// }
-
-id = input.required<string>();
+  readonly id = Number(this.activatedRoute.snapshot.paramMap.get('id'));
+  readonly conferance = this.conferanceService.getById(this.id);
 }

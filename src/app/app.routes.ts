@@ -5,12 +5,9 @@ import { NotFound } from './not-found/not-found';
 import { ConferanceDetails } from './conferance-details/conferance-details';
 
 export const routes: Routes = [
-
-{path:'',redirectTo:'home',pathMatch:'full'},
-
-{path:'details/:id',component:ConferanceDetails},
-
-{path:'home',component:Home},
-{path:'list',component:ConferanceList},
-{path:'**',component:NotFound},
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: Home },
+  { path: 'list', component: ConferanceList },
+  { path: 'details/:id', component: ConferanceDetails },
+  { path: '**', component: NotFound }
 ];
